@@ -1,0 +1,6 @@
+[submodule ".vim"]
+	path = .vim
+	url = https://github.com/tomgco/.vim.git
+[submodule ".zprezto"]
+	path = .zprezto
+	url = https://github.com/tomgco/prezto.git

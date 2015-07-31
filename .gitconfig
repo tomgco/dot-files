@@ -12,3 +12,5 @@
 	branch = auto
 [push]
 	default = simple
+[grep]
+  lineNumber = true

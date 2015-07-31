@@ -4,3 +4,6 @@
 [submodule ".zprezto"]
 	path = .zprezto
 	url = https://github.com/tomgco/prezto.git
+[submodule "tmux-mem-cpu-load"]
+	path = tmux-mem-cpu-load
+	url = git@github.com:thewtex/tmux-mem-cpu-load.git

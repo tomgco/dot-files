@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+function base16 {
+  local base16_dir="$HOME/.config/base16-shell/scripts"
+
+  if [[ $# -eq 1 ]]; then
+    COLORSCHEME="$base16_dir/base16-$1.sh"
+    colorscheme $COLORSCHEME
+  elif [[ $# -eq 2 ]]; then
+    COLORSCHEME="$base16_dir/base16-$1.$2.sh"
+    colorscheme $COLORSCHEME
+  else
+    find $base16_dir -name "base16-*.light.sh" | \
+      sed -E "s/.*base16-([^.]*).*\.sh/\1/"
+  fi
+}
+
+function colorscheme {
+  if [[ -s "$1" ]]; then
+    export COLORSCHEME="$1"
+    source $COLORSCHEME
+  fi
+}
+
+function invert-colors {
+  case "${COLORSCHEME}" in
+    *light.sh )
+      FROM_COLOR="light"
+      TO_COLOR="dark"
+      ;;
+    *dark.sh  )
+      FROM_COLOR="dark"
+      TO_COLOR="light"
+      ;;
+  esac
+
+  COLORSCHEME="$(echo $COLORSCHEME | sed -e "s/${FROM_COLOR}/${TO_COLOR}/")"
+  colorscheme $COLORSCHEME
+}
+
+# default color scheme
+base16 eighties
